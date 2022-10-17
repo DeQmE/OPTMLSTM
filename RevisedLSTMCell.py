@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 @author: adam (adamantios.ntakaris@ed.ac.uk)
+
+This is an extension of https://github.com/keras-team/keras/blob/v2.10.0/keras/layers/rnn/lstm.py
 """
+
 
 RECURRENT_DROPOUT_WARNING_MSG = (
     'RNN `implementation=2` is not supported when `recurrent_dropout` is set. '
