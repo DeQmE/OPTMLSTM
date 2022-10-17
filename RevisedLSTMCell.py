@@ -199,28 +199,25 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
 
     h_1 = o * self.activation(c)
     
-    gated_vector = tf.concat([i, f, c_t, c, o, h_1], axis=1)
-      
-    gated_vector_copy = tf.tile(gated_vector, (copies,1))
-
+    # Guarantor
+    gated_vector = tf.concat([i, f, c_t, c, o, h_1], axis=1) 
+    gated_vector_copy = tf.tile(gated_vector, (copies,1)) #Copies help avoid Curse of Dimensionality
     gated_labels = tf.tile(inputs[0][-1].reshape(1,-1), (copies,1))
 
     n_epoch = 13
     learning_rate = 0.0001
-        
+    
+    # Gradienr Descent
     theta_1 = tf.ones([self.units*6, 1])
 
     for epoch in range(n_epoch):
         y_pred = tf.matmul(gated_vector_copy, theta_1)
-
-
         error = y_pred - gated_labels
         gradients = 2/copies * tf.matmul(tf.transpose(gated_vector_copy), tf.cast(error, tf.float32))
         theta_1 = theta_1 - learning_rate * gradients
-
     importance = theta_1
 
-  
+    # Collect Gates and States
     i_gate_out = importance[:self.units, :]
     f_gate_out = importance[self.units:self.units*2, :]
     can_gate_out = importance[self.units*2:self.units*3, :]
@@ -228,7 +225,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
     o_gate_out = importance[self.units*4:self.units*5, :]
     h_gate_out = importance[self.units*5:self.units*6, :]
     
-    #importance score
+    # Importance Score
     improtance_i = tf.math.reduce_mean(i_gate_out, axis = 0)
     importance_f = tf.math.reduce_mean(f_gate_out, axis = 0)
     importance_can = tf.math.reduce_mean(can_gate_out, axis = 0) 
@@ -236,7 +233,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
     importance_o = tf.math.reduce_mean(o_gate_out, axis = 0)
     importance_h = tf.math.reduce_mean(h_gate_out, axis = 0)
    
-    # final/optimized ouput
+    # Final/Optimized Ouput
     merge_output = tf.stack([improtance_i, importance_f, importance_can, importance_c, importance_o, importance_h], axis = 0)
     result = tf.where(merge_output == tf.math.reduce_max(merge_output, axis = 0)) 
     
