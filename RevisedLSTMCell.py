@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-@author: adam (adamantios.ntakaris@ed.ac.uk)
+@author: adam (adamantios.ntakaris@ed.ac.uk, @gmail.com)
 
-This is an extension of https://github.com/keras-team/keras/blob/v2.10.0/keras/layers/rnn/lstm.py
+Attention: This is an extension of https://github.com/keras-team/keras/blob/v2.10.0/keras/layers/rnn/lstm.py
 """
 
 
@@ -237,7 +237,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
     merge_output = tf.stack([improtance_i, importance_f, importance_can, importance_c, importance_o, importance_h], axis = 0)
     result = tf.where(merge_output == tf.math.reduce_max(merge_output, axis = 0)) 
     
-    # best gate filter
+    # Best Gate Filter
     if result[0][0] == 0:
         h = tf.transpose(i_gate_out)
     elif result[0][0] == 1:
