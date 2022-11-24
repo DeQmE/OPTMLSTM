@@ -272,7 +272,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
         n_epoch = 13
         learning_rate = 0.0001
 
-        # Gradienr Descent
+        # Gradient Descent
         theta_1 = tf.ones([self.units*6, 1])
 
         for epoch in range(n_epoch):
