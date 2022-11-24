@@ -43,7 +43,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
     Args (similar to prototype LSTM layer):
         units: Positive integer, dimensionality of the output space.
 
-    Input Placeholder (updated based on the Revised LSTM layer)):
+    Input Placeholder (updated based on the Revised LSTM layer):
         inputs: A 3D tensor, with shape of `[batch=1, timesteps, features + 
                                              guarantor]`.
     """
