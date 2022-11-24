@@ -206,7 +206,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
         h_tm1 = states[0]  # previous memory state
         c_tm1 = states[1]  # previous carry state
 
-        inputs_1 = inputs[0][0:-1].reshape(1,-1)
+        inputs_1 = inputs[0][0:-1].reshape(1, -1)
 
         dp_mask = self.get_dropout_mask_for_cell(inputs, training, count=4)
         rec_dp_mask = self.get_recurrent_dropout_mask_for_cell(
@@ -266,8 +266,8 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
         # Guarantor
         copies = 1 # Curse of Dimensionality Helper
         gated_vector = tf.concat([i, f, c_t, c, o, h_temp], axis=1)
-        gated_vector_copy = tf.tile(gated_vector, (copies,1)) 
-        gated_labels = tf.tile(inputs[0][-1].reshape(1,-1), (copies,1))
+        gated_vector_copy = tf.tile(gated_vector, (copies, 1)) 
+        gated_labels = tf.tile(inputs[0][-1].reshape(1, -1), (copies, 1))
 
         n_epoch = 13
         learning_rate = 0.0001
@@ -293,12 +293,12 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
         h_gate_out = importance[self.units*5:self.units*6, :]
 
         # Importance Score
-        improtance_i = tf.math.reduce_mean(i_gate_out, axis = 0)
-        importance_f = tf.math.reduce_mean(f_gate_out, axis = 0)
-        importance_can = tf.math.reduce_mean(can_gate_out, axis = 0) 
-        importance_c = tf.math.reduce_mean(c_gate_out, axis = 0)
-        importance_o = tf.math.reduce_mean(o_gate_out, axis = 0)
-        importance_h = tf.math.reduce_mean(h_gate_out, axis = 0)
+        improtance_i = tf.math.reduce_mean(i_gate_out, axis=0)
+        importance_f = tf.math.reduce_mean(f_gate_out, axis=0)
+        importance_can = tf.math.reduce_mean(can_gate_out, axis=0) 
+        importance_c = tf.math.reduce_mean(c_gate_out, axis=0)
+        importance_o = tf.math.reduce_mean(o_gate_out, axis=0)
+        importance_h = tf.math.reduce_mean(h_gate_out, axis=0)
 
         # Final/Optimized Ouput
         merge_output = tf.stack(
@@ -308,10 +308,10 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
              importance_c, 
              importance_o, 
              importance_h], 
-            axis = 0
+            axis=0
         )
         result = tf.where(
-            merge_output == tf.math.reduce_max(merge_output, axis = 0)
+            merge_output == tf.math.reduce_max(merge_output, axis=0)
         ) 
 
         # Best Gate Filter
