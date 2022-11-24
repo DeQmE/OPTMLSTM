@@ -28,3 +28,4 @@ output_1 = Dense(1)(layer_1)
 model = keras.Model(inputs=input_1, outputs=output_1)
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mse'])
 model.fit(three_dim_inpt, lbls, batch_size=1, epochs=5)
+
