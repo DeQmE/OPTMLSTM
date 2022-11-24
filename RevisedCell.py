@@ -368,6 +368,5 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
         }
         base_config = super(RevisedLSTMCell, self).get_config() 
         return dict(list(base_config.items()) + list(config.items()))
-
     
     
