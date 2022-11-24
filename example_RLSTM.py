@@ -12,7 +12,7 @@ import RevisedCell
 
 # Input Dim --> (num_of_data_samples, 1, 41)
 # 41 = 40 LOB Price and Volume levels + Current mid_price/Guarantor
-three_dim_inpt = np.random.rand(600, 1, 41)
+3d_inpt = np.random.rand(600, 1, 41)
 
 # Regression Labels --> [mid_prices,]
 lbls = np.random.rand(600,)
@@ -27,6 +27,6 @@ output_1 = Dense(1)(layer_1)
 
 model = keras.Model(inputs=input_1, outputs=output_1)
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mse'])
-model.fit(three_dim_inpt, lbls, batch_size=1, epochs=5)
+model.fit(3d_inpt, lbls, batch_size=1, epochs=5)
 
 
