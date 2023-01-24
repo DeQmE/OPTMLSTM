@@ -1,1 +1,1 @@
-# Revised_LSTM_Cell
+# Optimum_Output_LSTM_Cell
