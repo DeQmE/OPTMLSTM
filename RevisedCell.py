@@ -33,8 +33,8 @@ RECURRENT_DROPOUT_WARNING_MSG = (
     'Using `implementation=1`.')
 
 @keras_export(v1=['keras.layers.LSTMCell'])
-class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
-    """ Revised Long Short-Term Memory Layer
+class OPTMLSTMCell(DropoutRNNCellMixin, Layer):
+    """ Optimum Output Long Short-Term Memory Layer
 
     This is an optimized extension of the current TensorFlow LSTM layer.
 
@@ -81,7 +81,7 @@ class RevisedLSTMCell(DropoutRNNCellMixin, Layer):
             self._enable_caching_device = kwargs.pop(
                 'enable_caching_device', False
             )
-        super(RevisedLSTMCell, self).__init__(**kwargs)
+        super(OPTMLSTMCell, self).__init__(**kwargs)
         self.units = units
         self.activation = activations.get(activation)
         self.recurrent_activation = activations.get(recurrent_activation)
