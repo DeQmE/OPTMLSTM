@@ -7,7 +7,7 @@
 from keras.layers import Dense
 import keras
 import numpy as np
-import RevisedCell
+import OPTMCell
 
 
 # Input Dim --> (num_of_data_samples, 1, 41)
@@ -21,7 +21,7 @@ batch_size = 1
 num_of_hidden_units = 8
 
 input_1 = keras.Input(batch_shape = (batch_size, 1, 41))
-layer_1 = keras.layers.RNN(RevisedCell.RevisedLSTMCell(num_of_hidden_units), 
+layer_1 = keras.layers.RNN(OPTMCell.RevisedLSTMCell(num_of_hidden_units), 
                            return_sequences=True, stateful=False)(input_1)
 output_1 = Dense(1)(layer_1)
 
