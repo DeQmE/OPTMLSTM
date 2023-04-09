@@ -9,6 +9,8 @@ import keras
 import numpy as np
 import OPTMCell
 
+# Note: Random data example for illustration purposes only
+# OPTM-LSTM is a narrow artificial intelligence model 
 
 # Input Dim --> (num_of_data_samples, 1, 41)
 # 41 = 40 LOB Price and Volume levels + Current mid_price/Guarantor
