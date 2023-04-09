@@ -5,3 +5,5 @@ The reader can find the implementation of the OPTM-LSTM cell based on a randomly
 The paper utilizes high-frequency limit order book datasets as input information to the OPTM-LSTM.
 
 Disclaimer: The present forecasting thesis is for research and development purposes only and not an investment or trading advice. 
+
+Note: OPTM-LSTM was developed based on the TensorFlow LSTM cell 
