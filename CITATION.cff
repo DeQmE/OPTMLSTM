@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Ntakaris"
+  given-names: "Adamantios"
+- family-names: "Gabbouj"
+  given-names: "Moncef"
+- family-names: "Kanniainen"
+  given-names: "Juho"
+
+title: "Optimum Output Long Short-Term Memory Cell for High-Frequency Trading Forecasting"
+version: 1.0.0
+#date-released: 2023-04-09
+#url: "https://github.com/DeQ101/OPTM_LSTM_Cell"
