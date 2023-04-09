@@ -6,4 +6,4 @@ The paper utilizes high-frequency limit order book datasets as input information
 
 Disclaimer: The present forecasting thesis is for research and development purposes only and not an investment or trading advice. 
 
-Note: OPTM-LSTM was developed based on the TensorFlow LSTM cell 
+Note: OPTM-LSTM was developed based on the TensorFlow LSTM cell https://github.com/keras-team/keras/blob/v2.10.0/keras/layers/rnn/lstm.py
