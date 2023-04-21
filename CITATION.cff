@@ -10,5 +10,5 @@ authors:
 
 title: "Optimum Output Long Short-Term Memory Cell for High-Frequency Trading Forecasting"
 version: 1.0.0
-#date-released: 2023-04-09
-#url: "https://github.com/DeQ101/OPTM_LSTM_Cell"
+date-released: 2023-04-21
+url: "https://github.com/DeQ101/OPTM_LSTM_Cell"
