@@ -43,7 +43,7 @@ class OPTMLSTMCell(DropoutRNNCellMixin, Layer):
     Args (similar to prototype LSTM layer):
         units: Positive integer, dimensionality of the output space.
 
-    Input Placeholder (updated based on the Revised LSTM layer):
+    Input Placeholder (updated based on the revised LSTM layer):
         inputs: A 3D tensor, with shape of `[batch=1, timesteps, features + 
                                              guarantor]`.
     """
@@ -366,6 +366,6 @@ class OPTMLSTMCell(DropoutRNNCellMixin, Layer):
             'implementation':
                 self.implementation
         }
-        base_config = super(RevisedLSTMCell, self).get_config() 
+        base_config = super(OPTMLSTMCell, self).get_config() 
         return dict(list(base_config.items()) + list(config.items()))
     
